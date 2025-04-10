@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MacBook Pro</title>
+  <link rel="stylesheet" href="assests/css/iphone.css">
+</head>
+
+<body>
+  <div class="product-container">
+    <h1>MacBook Pro</h1>
+
+    <div class="slideshow-container">
+      <div class="slide">
+        <img src="assests/img/macbookpro1.jpg" alt="MacBook Pro Front" >
+      </div>
+      <div class="slide">
+        <img src="assests/img/macbookpro2.jpg" alt="MacBook Pro Side">
+      </div>
+
+      <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+      <a class="next" onclick="changeSlide(1)">&#10095;</a>
+    </div>
+
+    <div class="dot-container">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+    </div>
+
+    <div class="product-details">
+      <p class="price"><strong>Price:</strong> ₹1,79,990</p>
+      <div class="specs">
+        <p><strong>Display:</strong> 14.2-inch Liquid Retina XDR display</p>
+        <p><strong>Processor:</strong> Apple M4 Pro chip, 12-core CPU, 18-core GPU</p>
+        <p><strong>Memory:</strong> 18GB Unified Memory</p>
+        <p><strong>Storage:</strong> 512GB SSD</p>
+        <p><strong>Battery:</strong> Up to 24 hours battery life</p>
+      </div>
+      <p><strong>Available Colors:</strong></p><br>
+      <div class="colors">
+        <div class="color-option" style="background-color: #1D1D1F;"></div>
+        <div class="color-option" style="background-color: #A2AAAD;"></div>
+      </div>
+      <a href="https://www.apple.com/in/shop/buy-mac/macbook-pro" class="buy-button">Buy</a>
+    </div>
+    <a href="mac.html" class="back-button">Back to Macs</a>
+  </div>
+
+  <script>
+    let slideIndex = 1;
+    showSlide(slideIndex);
+
+    function changeSlide(n) {
+      showSlide(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlide(slideIndex = n);
+    }
+
+    function showSlide(n) {
+      let i;
+      const slides = document.getElementsByClassName("slide");
+      const dots = document.getElementsByClassName("dot");
+      if (n > slides.length) { slideIndex = 1; }
+      if (n < 1) { slideIndex = slides.length; }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+    }
+  </script>
+</body>
+
+</html>

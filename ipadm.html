@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iPad</title>
+    <link rel="stylesheet" href="assests/css/iphone.css">
+</head>
+
+<body>
+    <div class="product-container">
+        <h1>iPad</h1>
+
+        <div class="slideshow-container">
+            <div class="slide">
+                <img src="assests/img/ipad1.jpg" alt="iPad Front">
+            </div>
+            <div class="slide">
+                <img src="assests/img/ipad2.jpg" alt="iPad Back">
+            </div>
+
+            <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+            <a class="next" onclick="changeSlide(1)">&#10095;</a>
+        </div>
+
+        <div class="dot-container">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+        </div>
+
+        <div class="product-details">
+            <p class="price"><strong>Price:</strong> ₹35,900</p>
+            <div class="specs">
+                <p><strong>Display:</strong> 11-inch Liquid Retina display with True Tone</p>
+                <p><strong>Camera:</strong> 12MP Wide camera</p>
+                <p><strong>Chip:</strong> A16</p>
+                <p><strong>Smart Keyboard:</strong> Works with Magic Keyboard Folio</p>
+            </div>
+            <p><strong>Available Colors:</strong></p><br>        
+            <div class="colors">
+                <div class="color-option" style="background-color: #eded12;"></div>
+                <div class="color-option" style="background-color: #ef5382;"></div>
+            </div>
+            <a href="https://www.apple.com/in/shop/buy-ipad/ipad" class="buy-button">Buy</a>
+        </div>
+        <a href="ipad.html" class="back-button">Back to iPads</a>
+    </div>
+
+    <script>
+        let slideIndex = 1;
+        showSlide(slideIndex);
+
+        function changeSlide(n) {
+            showSlide(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlide(slideIndex = n);
+        }
+
+        function showSlide(n) {
+            let i;
+            const slides = document.getElementsByClassName("slide");
+            const dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+    </script>
+</body>
+
+</html>

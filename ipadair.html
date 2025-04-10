@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iPad Air</title>
+    <link rel="stylesheet" href="assests/css/iphone.css">
+</head>
+
+<body>
+    <div class="product-container">
+        <h1>iPad Air</h1>
+
+        <div class="slideshow-container">
+            <div class="slide">
+                <img src="assests/img/ipadair1.png" alt="iPad Air Front">
+            </div>
+            <div class="slide">
+                <img src="assests/img/ipadair2.jpg" alt="iPad Air Back">
+            </div>
+
+            <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+            <a class="next" onclick="changeSlide(1)">&#10095;</a>
+        </div>
+
+        <div class="dot-container">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+        </div>
+
+        <div class="product-details">
+            <p class="price"><strong>Price:</strong> ₹59,900</p>
+            <div class="specs">
+                <p><strong>Display:</strong> 11-inch Liquid Retina displaywith P3 wide color, True Tone, and ultralow reflectivity</p>
+                <p><strong>Camera:</strong> 12MP Ultra Wide front camera and 12MP Wide back camera with adaptive True Tone flash</p>
+                <p><strong>Chip:</strong> Apple M3 Chip</p>
+                <p><strong>Smart Keyboard:</strong> Works with Magic Keyboard</p>
+            </div>
+            <p><strong>Available Colors:</strong></p><br>
+            <div class="colors">
+                <div class="color-option" style="background-color: #28313f;"></div>
+                <div class="color-option" style="background-color: #c1def5;"></div>
+            </div>
+            <a href="https://www.apple.com/in/shop/buy-ipad/ipad-air" class="buy-button">Buy</a>
+        </div>
+        <a href="ipad.html" class="back-button">Back to iPads</a>
+    </div>
+
+    <script>
+        let slideIndex = 1;
+        showSlide(slideIndex);
+
+        function changeSlide(n) {
+            showSlide(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlide(slideIndex = n);
+        }
+
+        function showSlide(n) {
+            let i;
+            const slides = document.getElementsByClassName("slide");
+            const dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+    </script>
+</body>
+
+</html>

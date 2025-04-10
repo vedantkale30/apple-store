@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iPhone 14</title>
+    <link rel="stylesheet" href="assests/css/iphone.css">
+</head>
+
+<body>
+    <div class="product-container">
+        <h1>iPhone 14</h1>
+
+        <div class="slideshow-container">
+            <div class="slide">
+                <img src="assests/img/iphone14_1.jpg" alt="iPhone 14 Front">
+            </div>
+            <div class="slide">
+                <img src="assests/img/iphone14_2.jpg" alt="iPhone 14 Back">
+            </div>
+
+            <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+            <a class="next" onclick="changeSlide(1)">&#10095;</a>
+        </div>
+
+        <div class="dot-container">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+        </div>
+
+        <div class="product-details">
+            <p class="price"><strong>Price:</strong> ₹50,990</p>
+            <div class="specs">
+                <p><strong>Display:</strong> 6.1 inches (15.40 cm), Super Retina XDR OLED</p>
+                <p><strong>Camera:</strong> 12 MP + 12 MP Dual Rear & 12 MP Front Camera</p>
+                <p><strong>Processor:</strong> Apple A15 Bionic Chip, Hexa Core</p>
+                <p><strong>Battery:</strong> 15W MagSafe Wireless Charging, 7.5W Qi Wireless Charging</p>
+            </div>
+            <p><strong>Available Colors:</strong></p><br>        
+            <div class="colors">
+                <div class="color-option" style="background-color: #E6DDEB;"></div>
+                <div class="color-option" style="background-color: #F9E479;"></div>
+                <div class="color-option" style="background-color: #222930;"></div>
+                <div class="color-option" style="background-color: #A0B4C7;"></div>
+            </div>
+            <a href="https://www.apple.com/in/shop/buy-iphone/iphone-14" class="buy-button">Buy</a>
+        </div>
+        <a href="iphone.html" class="back-button">Back to iPhones</a>
+    </div>
+
+    <script>
+        let slideIndex = 1;
+        showSlide(slideIndex);
+
+        function changeSlide(n) {
+            showSlide(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlide(slideIndex = n);
+        }
+
+        function showSlide(n) {
+            let i;
+            const slides = document.getElementsByClassName("slide");
+            const dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+    </script>
+</body>
+
+</html>

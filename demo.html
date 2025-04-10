@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>iPhone 14</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f5f5f7;
+      padding: 2rem;
+      color: #1d1d1f;
+      display: flex;
+      justify-content: center;
+    }
+
+    .product-container {
+      max-width: 800px;
+      width: 100%;
+      background-color: #fff;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .product-container h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      color: #000;
+    }
+
+    .slideshow-container {
+        position: relative;
+        margin: auto;
+        max-width: 400px;
+        border-radius: 10px;
+        /* overflow: hidden; REMOVE this */
+        padding: 0 50px; /* add space on both sides to accommodate arrows */
+      }
+      
+
+    .slide {
+      display: none;
+      width: 100%;
+    }
+
+    .slide img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: auto;
+        padding: 10px 14px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.5);
+        user-select: none;
+        transition: background-color 0.3s;
+        z-index: 2;
+      }
+      
+      .prev {
+        left: 10px; /* inside the image with a little space */
+      }
+      
+      .next {
+        right: 10px; /* inside the image with a little space */
+      }
+      
+      .prev:hover, .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+      
+      
+
+    .dot-container {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .dot {
+      cursor: pointer;
+      height: 12px;
+      width: 12px;
+      margin: 0 4px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+
+    .active, .dot:hover {
+      background-color: #717171;
+    }
+
+    .product-details {
+      margin-top: 2rem;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .price {
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #0071e3;
+    }
+
+    .colors {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 2rem;
+    }
+
+    .color-option {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border 0.3s;
+    }
+
+    .color-option:hover {
+      border: 2px solid #0071e3;
+    }
+
+    .back-button {
+      display: inline-block;
+      padding: 0.7rem 1.2rem;
+      font-size: 1rem;
+      color: #fff;
+      background-color: #0071e3;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .back-button:hover {
+      background-color: #005bb5;
+    }
+
+    @media (max-width: 500px) {
+      .slideshow-container {
+        max-width: 100%;
+      }
+
+      .product-container h1 {
+        font-size: 1.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="product-container">
+    <h1>iPhone 14</h1>
+
+    <div class="slideshow-container">
+      <div class="slide">
+        <img src="assests/img/btn1.jpg" alt="iPhone 14 Front">
+      </div>
+      <div class="slide">
+        <img src="assests/img/btn2.jpg" alt="iPhone 14 Back">
+      </div>
+
+      <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+      <a class="next" onclick="changeSlide(1)">&#10095;</a>
+    </div>
+
+    <div class="dot-container">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+    </div>
+
+    <div class="product-details">
+      <p class="price"><strong>Price:</strong> ₹69,900</p>
+      <p><strong>Display:</strong> 6.1‑inch Super Retina XDR display</p>
+      <p><strong>Camera:</strong> Dual-camera system (Main, Ultra Wide)</p>
+      <p><strong>Chip:</strong> A15 Bionic chip</p>
+      <p><strong>Battery:</strong> Up to 20 hours video playback</p>
+      <p><strong>Available Colors:</strong></p>
+      <div class="colors">
+        <div class="color-option" style="background-color: #0071e3;"></div>
+        <div class="color-option" style="background-color: #a55eea;"></div>
+        <div class="color-option" style="background-color: #0f0;"></div>
+        <div class="color-option" style="background-color: #f5f5f5;"></div>
+      </div>
+      <a href="store.html" class="back-button">Back to Store</a>
+    </div>
+  </div>
+
+  <script>
+    let slideIndex = 1;
+    showSlide(slideIndex);
+
+    function changeSlide(n) {
+      showSlide(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlide(slideIndex = n);
+    }
+
+    function showSlide(n) {
+      let i;
+      const slides = document.getElementsByClassName("slide");
+      const dots = document.getElementsByClassName("dot");
+      if (n > slides.length) { slideIndex = 1; }
+      if (n < 1) { slideIndex = slides.length; }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!-- Save as iphone16.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iPhone 16</title>
+    <link rel="stylesheet" href="assests/css/iphone.css">
+</head>
+
+<body>
+    <div class="product-container">
+        <h1>iPhone 16</h1>
+
+        <div class="slideshow-container">
+            <div class="slide">
+                <img src="assests/img/iphone16_1.jpg" alt="iPhone 16 Front">
+            </div>
+            <div class="slide">
+                <img src="assests/img/iphone16_2.jpg" alt="iPhone 16 Back">
+            </div>
+            <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+            <a class="next" onclick="changeSlide(1)">&#10095;</a>
+        </div>
+
+        <div class="dot-container">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+        </div>
+
+        <div class="product-details">
+            <p class="price"><strong>Price:</strong> ₹104,900</p>
+            <div class="specs">
+                <p><strong>Display:</strong> 6.1 inches (15.54 cm), Super Retina XDR OLED Display</p>
+                <p><strong>Camera:</strong> 48 MP + 12 MP Dual Rear & 12 MP Front Camera</p>
+                <p><strong>Processor:</strong> Apple A18 Chip, Hexa Core</p>
+                <p><strong>Battery:</strong> 25W MagSafe Wireless Charging</p>
+            </div>
+            <p><strong>Available Colors:</strong></p><br>
+            <div class="colors">
+                <div class="color-option" style="background-color: #F2ADDA;"></div>
+                <div class="color-option" style="background-color: #9AADF6;"></div>
+                <div class="color-option" style="background-color: #B0D4D2;"></div>
+                <div class="color-option" style="background-color: #3C4042;"></div>
+            </div>
+            <a href="https://www.apple.com/in/shop/buy-iphone/iphone-16" class="buy-button">Buy</a>
+        </div>
+        <a href="iphone.html" class="back-button">Back to iPhones</a>
+    </div>
+
+    <script>
+        let slideIndex = 1;
+        showSlide(slideIndex);
+        function changeSlide(n) {
+            showSlide(slideIndex += n);
+        }
+        function currentSlide(n) {
+            showSlide(slideIndex = n);
+        }
+        function showSlide(n) {
+            let i;
+            const slides = document.getElementsByClassName("slide");
+            const dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+    </script>
+</body>
+
+</html>
